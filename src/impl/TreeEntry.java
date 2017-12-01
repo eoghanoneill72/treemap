@@ -2,7 +2,7 @@ package impl;
 
 import core.Entry;
 
-public class TreeEntry<K, V> implements Entry<K, V> {
+public class TreeEntry<K extends Comparable<K>, V> implements Comparable<Entry<K, V>> {
 
 	private K key;
 	private V value;
@@ -17,12 +17,10 @@ public class TreeEntry<K, V> implements Entry<K, V> {
 	}
 
 
-	@Override
 	public K key() {
 		return key;
 	}
 
-	@Override
 	public V value() {
 		return value;
 	}
@@ -46,6 +44,12 @@ public class TreeEntry<K, V> implements Entry<K, V> {
 	@Override
 	public String toString() {
 		return "{k" + key + ", " + value + "}";
+	}
+
+	@Override
+	public int compareTo(Entry<K, V> o) {
+		// TODO Auto-generated method stub
+		return key.compareTo(o.key());
 	}
 	
 	
