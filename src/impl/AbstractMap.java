@@ -16,18 +16,48 @@ import core.Map;
 public class AbstractMap<K,V> implements Map<K,V> {
 
 	protected static class MapEntry<K, V> implements Entry<K,V>{
-
+		
+		private K k;
+		private V v;
+		public MapEntry(K key, V value) {
+			k = key;
+			v = value;
+		}
+	
+		
 		@Override
 		public K key() {
 			// TODO Auto-generated method stub
-			return null;
+			return k;
 		}
 
 		@Override
 		public V value() {
 			// TODO Auto-generated method stub
-			return null;
+			return v;
 		}
+
+
+		public K getK() {
+			return k;
+		}
+
+
+		public void setK(K k) {
+			this.k = k;
+		}
+
+
+		public V getV() {
+			return v;
+		}
+
+
+		public void setV(V v) {
+			this.v = v;
+		}
+		
+		
 		
 	}
 	

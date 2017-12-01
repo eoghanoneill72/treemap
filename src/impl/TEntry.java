@@ -66,10 +66,4 @@ public class TEntry<K, V> implements Comparable<TEntry<K, V>>, Entry<K, V> {
 		
 		System.out.println(e1.compareTo(e2));
 	}
-
-	@Override
-	public int compareTo(TEntry<K, V> o) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 }
