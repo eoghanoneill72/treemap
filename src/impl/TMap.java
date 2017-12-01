@@ -5,11 +5,12 @@ import java.util.Iterator;
 import core.Entry;
 import core.Map;
 
-public class TMap<K, V> implements Map<K, V> {
+
+public class TMap<K extends Comparable<K>, V> implements Map<K, V> {
 
 //	public class TreeEntry<K extends Comparable<K>, V> implements Comparable<Entry<K, V>> {
-
-	protected class TreeEntry<K,V> implements Entry<K,V> {
+	protected class static TreeEntry<K extends Comparable<K>, V> implements Comparable<TreeEntry<K, V>> {
+//	protected class TreeEntry<K extends Comparable<K>, V> implements Comparable<TreeEntry<K, V>> {
 
 		private K key;
 		private V value;
@@ -58,21 +59,13 @@ public class TMap<K, V> implements Map<K, V> {
 			return key.compareTo(o.key());
 		}
 		
-		public int compareTo(Entry<K, V> o) {
-			return key.compareTo(o.key());
-		}
+//		public int compareTo(Entry<K, V> o) {
+//			return key.compareTo(o.key());
+//		}
 		
-		//test function
-		public static void main(String[] args) {
-			TreeEntry<Integer,String> e1 = new TreeEntry<>(1,"Hey");
-			TreeEntry<Integer,String> e2 = new TreeEntry<>(2,"Hey");
-			
-//			Entry<Integer,String> e1 = new TreeEntry<Integer,String>(1,"Hey");
-//			Entry<Integer,String> e2 = new TreeEntry<Integer,String>(2,"Hey");
-			
-			System.out.println(e1.compareTo(e2));
-		}
 	}
+	
+	//BACK TO TREEMAP CLASS///
 
 	public TMap() {
 		// TODO Auto-generated constructor stub

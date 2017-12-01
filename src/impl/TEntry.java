@@ -1,17 +1,18 @@
 package impl;
 
-//public class TreeEntry<K extends Comparable<K>, V> implements Comparable<Entry<K, V>> {
-public class TreeEntry<K extends Comparable<K>, V> implements Comparable<TreeEntry<K, V>> {
+import core.Entry;
+
+public class TEntry<K, V> implements Comparable<TEntry<K, V>>, Entry<K, V> {
 
 	
 	private K key;
 	private V value;
 	
-	public TreeEntry() {
+	public TEntry() {
 		this(null,null);
 	}
 	
-	public TreeEntry(K k, V v) {
+	public TEntry(K k, V v) {
 		setKey(k);
 		value = v;
 	}
@@ -46,21 +47,29 @@ public class TreeEntry<K extends Comparable<K>, V> implements Comparable<TreeEnt
 		return "{k" + key + ", " + value + "}";
 	}
 
-	public int compareTo(TreeEntry<K, V> o) {
+	public int compareTo(TEntry<K, V> o) {
 		// TODO Auto-generated method stub
 		return key.compareTo(o.key());
 	}
 	
-
+//	public int compareTo(Entry<K, V> o) {
+//		return key.compareTo(o.key());
+//	}
 	
 	//test function
 	public static void main(String[] args) {
-		TreeEntry<Integer,String> e1 = new TreeEntry<>(1,"Hey");
-		TreeEntry<Integer,String> e2 = new TreeEntry<>(2,"Hey");
+		TEntry<Integer,String> e1 = new TEntry<>(1,"Hey");
+		TEntry<Integer,String> e2 = new TEntry<>(2,"Hey");
 		
 //		Entry<Integer,String> e1 = new TreeEntry<Integer,String>(1,"Hey");
 //		Entry<Integer,String> e2 = new TreeEntry<Integer,String>(2,"Hey");
 		
 		System.out.println(e1.compareTo(e2));
+	}
+
+	@Override
+	public int compareTo(TEntry<K, V> o) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }
