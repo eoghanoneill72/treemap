@@ -59,6 +59,11 @@ public class TreeMap<K extends Comparable<K>,V> implements Map<K,V>{
 	private BinarySearchTree<TreeEntry<K,V>> tree;
 	private int size;
 	
+	public TreeMap() {
+		tree = new BinarySearchTree<TreeEntry<K,V>>();
+		size = 0;
+	}
+	
 	//<--------start of part (a)--------->//
 
 	@Override
@@ -85,15 +90,17 @@ public class TreeMap<K extends Comparable<K>,V> implements Map<K,V>{
 
 	@Override
 	public V get(K k) {
-		//find entry in tree
+		//find entry in tree based on key. Create temp entry to search with
+		TreeEntry<K,V> temp = new TreeEntry<>(k,null);
+		TreeEntry<K,V> entry = tree.find(temp);
 		//extract value from entry
-		return null;
+		return entry.value();
 	}
 
 	@Override
 	public V put(K k, V v) {
 		//create entry
-		TreeEntry<K,V> entry = new TreeEntry<>();
+		TreeEntry<K,V> entry = new TreeEntry<>(k,v);
 		//insert it into the tree
 		TreeEntry<K,V> old = tree.insert(entry);
 		return old.value();
@@ -102,7 +109,9 @@ public class TreeMap<K extends Comparable<K>,V> implements Map<K,V>{
 	@Override
 	public V remove(K k) {
 		// TODO Auto-generated method stub
-		return null;
+		TreeEntry<K,V> temp = new TreeEntry<>(k,null);
+		TreeEntry<K,V> entry = tree.remove(temp);
+		return entry.value();
 	}
 
 	//<--------end of part (b)--------->//
@@ -126,7 +135,7 @@ public class TreeMap<K extends Comparable<K>,V> implements Map<K,V>{
 		return null;
 	}
 	
-//	public static void main(String[] args) {
+	public static void main(String[] args) {
 //		TreeEntry<Integer,String> e1 = new TreeEntry<>(1,"Hey");
 //		TreeEntry<Integer,String> e2 = new TreeEntry<>(2,"Hey");
 //		
@@ -134,7 +143,12 @@ public class TreeMap<K extends Comparable<K>,V> implements Map<K,V>{
 ////		Entry<Integer,String> e2 = new TreeEntry<Integer,String>(2,"Hey");
 //		
 //		System.out.println(e1.compareTo(e2));
-//	}
+		
+		TreeMap<Integer,String> t1 = new TreeMap<>();
+		System.out.println(t1.size());
+		t1.put(3, "Boy");
+		System.out.println(t1);
+	}
 }
 
 
