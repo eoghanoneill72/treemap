@@ -1,8 +1,10 @@
 package impl;
 
-public class TreeMap<TreeEntry<K,V> extends TreeEntry<K,V> implements BinarySearchTree<TreeEntry<K,V>>
+public class TreeMap<TreeEntry<K extends comparable<K>,V> extends comparable<TreeEntry<K,V>>> implements Iterable<TreeEntry<K,V>>{
+	
+}
 
-public class TreeMap<TreeEntry<K,V> extends BinarySearchTree<TreeEntry<K,V>>
+//public class TreeMap<TreeEntry<K,V> extends BinarySearchTree<TreeEntry<K,V>>
 
 
 //import java.util.Iterator;
