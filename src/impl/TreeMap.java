@@ -58,6 +58,8 @@ public class TreeMap<K extends Comparable<K>,V> implements Map<K,V>{
 	
 	private BinarySearchTree<TreeEntry<K,V>> tree;
 	private int size;
+	
+	//<--------start of part (a)--------->//
 
 	@Override
 	public int size() {
@@ -69,17 +71,32 @@ public class TreeMap<K extends Comparable<K>,V> implements Map<K,V>{
 		return size==0;
 	}
 	
+	
+	@Override
+	public String toString() {
+//		return super.toString();
+		return tree.toString();
+
+	}
+	
+	//<--------end of part (a)--------->//
+
+	//<--------start of part (b)--------->//
 
 	@Override
 	public V get(K k) {
-		// TODO Auto-generated method stub
+		//find entry in tree
+		//extract value from entry
 		return null;
 	}
 
 	@Override
 	public V put(K k, V v) {
-		// TODO Auto-generated method stub
-		return null;
+		//create entry
+		TreeEntry<K,V> entry = new TreeEntry<>();
+		//insert it into the tree
+		TreeEntry<K,V> old = tree.insert(entry);
+		return old.value();
 	}
 
 	@Override
@@ -88,6 +105,9 @@ public class TreeMap<K extends Comparable<K>,V> implements Map<K,V>{
 		return null;
 	}
 
+	//<--------end of part (b)--------->//
+
+	//<--------start of part (c)--------->//
 	@Override
 	public Iterator<K> keys() {
 		// TODO Auto-generated method stub
