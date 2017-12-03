@@ -5,17 +5,17 @@ import java.util.Iterator;
 import core.Entry;
 import core.Map;
 
-//TreeMap should be take parameters which are comparable
-//public class TreeMap<K extends comparable<K>,V> extends comparable<TreeEntry<K,V>>> implements Iterable<TreeEntry<K,V>>{
+//TreeMap1 should be take parameters which are comparable
+//public class TreeMap1<K extends comparable<K>,V> extends comparable<TreeEntry<K,V>>> implements Iterable<TreeEntry<K,V>>{
 //Tree map of types of generic types K and V where K extends is comparable and the tree map implements the interface map.
-public class TreeMap<K extends Comparable<K>,V> implements Map<K,V>{
-//public class TreeMap<K,V> implements Comparable<TreeMap<K,V>>,  Map<K,V>{
+public class TreeMap1<K extends Comparable<K>,V> implements Map<K,V>{
+//public class TreeMap1<K,V> implements Comparable<TreeMap1<K,V>>,  Map<K,V>{
 
 	
 	//The key must be comparable for the TreeEntry to be comparable
 	
 //	class Item<T extends Comparable<T>> implements Comparable<Item<T>>
-
+	private static class TreeEntry<K,V> implements Comparable<TreeEntry<K,V>>{
 		
 //	protected class TreeEntry<K,V> implements Entry<K,V>, Comparable<TreeEntry<K,V>>{
 
@@ -33,19 +33,17 @@ public class TreeMap<K extends Comparable<K>,V> implements Map<K,V>{
 			value = v;
 		}
 		
-		@Override
 		public K key() {
 			// TODO Auto-generated method stub
 			return key;
 		}
 
-		@Override
 		public V value() {
 			// TODO Auto-generated method stub
 			return value;
 		}
 
-//		public int compareTo(TreeMap<K, V>.TreeEntry<K, V> o) {
+//		public int compareTo(TreeMap1<K, V>.TreeEntry<K, V> o) {
 //			// TODO Auto-generated method stub
 //			return this.key().compareTo(o.key());
 //		}
@@ -54,32 +52,22 @@ public class TreeMap<K extends Comparable<K>,V> implements Map<K,V>{
 			return "{k" + key + ", " + value + "}";
 		}
 
+		@SuppressWarnings("unchecked")
+		//Is this correct?
 		@Override
-		public int compareTo(TreeMap<K, V>.TreeEntry<K, V> o) {
-			return 0;
+		public int compareTo(TreeEntry<K, V> arg0) {
+			return ((Comparable<TreeEntry<K, V>>)key).compareTo((TreeEntry<K, V>)arg0.key());
 		}
-
-//		public int compareTo(TreeMap<K, V>.TreeEntry<K, V> o) {
-//			// TODO Auto-generated method stub
-//			return 0;
-//		}
-
-//		@Override
-//		public int compareTo(TreeMap<K, V>.TreeEntry<K, V> o) {
-//			// TODO Auto-generated method stub
-//			return 0;
-//		}
-
-		
+				
 	}
+	
 	//<--------end of tree entry--------->//
 	
 	private BinarySearchTree<TreeEntry<K,V>> tree;
-	private BinarySearchTree<K extends Comparable<K>> tree;
 
 	private int size;
 	
-	public TreeMap() {
+	public TreeMap1() {
 		tree = new BinarySearchTree<TreeEntry<K,V>>();
 		size = 0;
 	}
@@ -156,15 +144,15 @@ public class TreeMap<K extends Comparable<K>,V> implements Map<K,V>{
 	}
 	
 	public static void main(String[] args) {
-//		TreeEntry<Integer,String> e1 = new TreeEntry<>(1,"Hey");
-//		TreeEntry<Integer,String> e2 = new TreeEntry<>(2,"Hey");
-//		
-////		Entry<Integer,String> e1 = new TreeEntry<Integer,String>(1,"Hey");
-////		Entry<Integer,String> e2 = new TreeEntry<Integer,String>(2,"Hey");
-//		
-//		System.out.println(e1.compareTo(e2));
+		TreeEntry<Integer,String> e1 = new TreeEntry<>(1,"Hey");
+		TreeEntry<Integer,String> e2 = new TreeEntry<>(2,"Hey");
 		
-		TreeMap<Integer,String> t1 = new TreeMap<>();
+//		Entry<Integer,String> e1 = new TreeEntry<Integer,String>(1,"Hey");
+//		Entry<Integer,String> e2 = new TreeEntry<Integer,String>(2,"Hey");
+		
+		System.out.println(e1.compareTo(e2));
+		
+		TreeMap1<Integer,String> t1 = new TreeMap1<>();
 		System.out.println(t1.size());
 		t1.put(3, "Boy");
 		System.out.println(t1);
@@ -194,14 +182,14 @@ public class TreeMap<K extends Comparable<K>,V> implements Map<K,V>{
 
 
 
-//public class TreeMap<TreeEntry<K,V> extends BinarySearchTree<TreeEntry<K,V>>
+//public class TreeMap1<TreeEntry<K,V> extends BinarySearchTree<TreeEntry<K,V>>
 
 
 //import java.util.Iterator;
 //
 //import core.Map;
 //
-//public class TreeMap<T extends Comparable<T>> implements Iterable<T> {
+//public class TreeMap1<T extends Comparable<T>> implements Iterable<T> {
 ////Type T refers to TreeEntry which Extends Comparable
 //	
 //	private BinarySearchTree<T> tree;
@@ -216,7 +204,7 @@ public class TreeMap<K extends Comparable<K>,V> implements Map<K,V>{
 //		
 //	}
 //	
-//	public TreeMap() {
+//	public TreeMap1() {
 //		// TODO Auto-generated constructor stub
 //	}
 //

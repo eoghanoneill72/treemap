@@ -121,7 +121,7 @@ public abstract class AbstractBinaryTree<T> implements BinaryTree<T> {
 				public void visit(Position<T> p, Object data) {
 					//cast data Object to list of positions of type T
 					//What if the object cannot be cast to a list!?!
-					//We must ensure it is possible because we have supressed the the warning
+					//We must ensure it is possible because we have suppressed the the warning
 					((List<Position<T>>) data).insertLast(p);
 					Iterator<Position<T>> it = children(p);
 					while (it.hasNext()) {
