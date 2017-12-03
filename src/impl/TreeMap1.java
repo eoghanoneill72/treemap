@@ -112,8 +112,6 @@ public class TreeMap1<K extends Comparable<K>,V> implements Map<K,V>{
 		//create temporary dummy entry with the key to remove
 		TreeEntry<K,V> temp = new TreeEntry<>(k,null);
 		//remove any entry with that key
-		//is removal based on key or entire entry?
-		//get
 		TreeEntry<K,V> entry = tree.remove(temp);
 		if (entry == null) {
 			return null;
@@ -128,19 +126,53 @@ public class TreeMap1<K extends Comparable<K>,V> implements Map<K,V>{
 	@Override
 	public Iterator<K> keys() {
 		// TODO Auto-generated method stub
-		return null;
-	}
+				return new Iterator<K>() {
+					Iterator<TreeEntry<K, V>> iterator = treeEntries();
+
+					@Override
+					public boolean hasNext() {
+						// TODO Auto-generated method stub
+						return iterator.hasNext();
+					}
+
+					@Override
+					public K next() {
+						// TODO Auto-generated method stub
+						return iterator.next().key();
+					}
+				};
+			}
 
 	@Override
 	public Iterator<V> values() {
 		// TODO Auto-generated method stub
-		return null;
+		return new Iterator<V>() {
+			Iterator<TreeEntry<K, V>> iterator = treeEntries();
+
+			@Override
+			public boolean hasNext() {
+				// TODO Auto-generated method stub
+				return iterator.hasNext();
+			}
+
+			@Override
+			public V next() {
+				// TODO Auto-generated method stub
+				return iterator.next().value();
+			}
+		};
 	}
 
+	public Iterator<TreeEntry<K, V>> treeEntries() {
+		// TODO Auto-generated method stub
+		return tree.iterator();
+	}
+		
 	@Override
 	public Iterator<Entry<K, V>> entries() {
 		// TODO Auto-generated method stub
 		return null;
+
 	}
 	
 	public static void main(String[] args) {	
