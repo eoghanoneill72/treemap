@@ -5,22 +5,11 @@ import java.util.Iterator;
 import core.Entry;
 import core.Map;
 
-//TreeMap1 should be take parameters which are comparable
-//public class TreeMap1<K extends comparable<K>,V> extends comparable<TreeEntry<K,V>>> implements Iterable<TreeEntry<K,V>>{
-//Tree map of types of generic types K and V where K extends is comparable and the tree map implements the interface map.
+
 public class TreeMap1<K extends Comparable<K>,V> implements Map<K,V>{
-//public class TreeMap1<K,V> implements Comparable<TreeMap1<K,V>>,  Map<K,V>{
 
-	
-	//The key must be comparable for the TreeEntry to be comparable
-	
-//	class Item<T extends Comparable<T>> implements Comparable<Item<T>>
+
 	private static class TreeEntry<K extends Comparable<K>,V> implements Comparable<TreeEntry<K,V>>{
-		
-//	protected class TreeEntry<K,V> implements Entry<K,V>, Comparable<TreeEntry<K,V>>{
-
-//	protected class TreeEntry<K extends Comparable<K>, V> implements Comparable<TreeEntry<K, V>>, Entry<K,V>{
-
 		private K key;
 		private V value;
 		
@@ -43,25 +32,14 @@ public class TreeMap1<K extends Comparable<K>,V> implements Map<K,V>{
 			return value;
 		}
 
-//		public int compareTo(TreeMap1<K, V>.TreeEntry<K, V> o) {
-//			// TODO Auto-generated method stub
-//			return this.key().compareTo(o.key());
-//		}
-		
 		public String toString() {
-			return "{k" + key + ", " + value + "}";
+			return "{" + key + ", " + value + "}";
 		}
 	
 		public int compareTo(TreeEntry<K, V> o) {
-//	        int x = key.compareTo(arg0.key());
-//	        return (x != 0 ? x : key.compareTo(arg0.key()));
 			return key.compareTo(o.key());
 
 	    }
-		
-		
-			
-		
 				
 	}
 	
@@ -100,6 +78,12 @@ public class TreeMap1<K extends Comparable<K>,V> implements Map<K,V>{
 
 	//<--------start of part (b)--------->//
 
+	public TreeEntry<K,V> getEntry(K k, V v){
+		TreeEntry<K,V> temp = new TreeEntry<>(k,v);
+		TreeEntry<K,V> entry = tree.find(temp);
+		return entry;
+	}
+	
 	@Override
 	public V get(K k) {
 		//find entry in tree based on key. Create temp entry to search with
@@ -113,15 +97,20 @@ public class TreeMap1<K extends Comparable<K>,V> implements Map<K,V>{
 	public V put(K k, V v) {
 		//create entry
 		TreeEntry<K,V> entry = new TreeEntry<>(k,v);
+//		System.out.println(entry);
 		//insert it into the tree
 		TreeEntry<K,V> old = tree.insert(entry);
+		//returns the value if the entry already existed, otherwise, null
 		return old.value();
 	}
 
 	@Override
 	public V remove(K k) {
-		// TODO Auto-generated method stub
+		//create temporary dummy entry with the key to remove
 		TreeEntry<K,V> temp = new TreeEntry<>(k,null);
+		//remove any entry with that key
+		//is removal based on key or entire entry?
+		//get
 		TreeEntry<K,V> entry = tree.remove(temp);
 		return entry.value();
 	}
@@ -148,17 +137,41 @@ public class TreeMap1<K extends Comparable<K>,V> implements Map<K,V>{
 	}
 	
 	public static void main(String[] args) {
-		TreeEntry<Integer,String> e1 = new TreeEntry<>(1,"Hey");
-		TreeEntry<Integer,String> e2 = new TreeEntry<>(2,"Hey");
-		
-//		Entry<Integer,String> e1 = new TreeEntry<Integer,String>(1,"Hey");
-//		Entry<Integer,String> e2 = new TreeEntry<Integer,String>(2,"Hey");
-		
-		System.out.println(e1.compareTo(e2));
+//		TreeEntry<Integer,String> e1 = new TreeEntry<>(1,"Hey");
+//		TreeEntry<Integer,String> e2 = new TreeEntry<>(2,"Hey");
+//		System.out.println(e1);
+//		System.out.println(e1.compareTo(e2));
 		
 		TreeMap1<Integer,String> t1 = new TreeMap1<>();
 		System.out.println(t1.size());
-		t1.put(3, "Boy");
 		System.out.println(t1);
+		System.out.println(t1.put(3, "Boy"));
+		System.out.println(t1);
+		
+		//<--------start of part (d)--------->//
+//		TreeMap1<Integer,String> t = new TreeMap1<>();
+//		t.put(24, "");
+//		System.out.println(t);
+//		t.put(12, "");
+//		System.out.println(t);
+//		t.put(36, "");
+//		System.out.println(t);
+//		t.put(5, "");
+//		System.out.println(t);
+//		t.put(7, "");
+//		System.out.println(t);
+//		t.put(2, "");
+//		System.out.println(t);
+//		t.put(76, "");
+//		System.out.println(t);
+//		t.remove(24, "");
+//		System.out.println(t);
+//		t.put(18, "");
+//		System.out.println(t);
+//		t.put(24, "");
+//		System.out.println(t);
+		//<--------end of part (d)--------->//
+
+
 	}
 }
