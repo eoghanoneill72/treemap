@@ -97,11 +97,14 @@ public class TreeMap1<K extends Comparable<K>,V> implements Map<K,V>{
 	public V put(K k, V v) {
 		//create entry
 		TreeEntry<K,V> entry = new TreeEntry<>(k,v);
-//		System.out.println(entry);
 		//insert it into the tree
 		TreeEntry<K,V> old = tree.insert(entry);
 		//returns the value if the entry already existed, otherwise, null
-		return old.value();
+		if (old == null) {
+			return null;
+		}else {
+			return old.value();
+		}
 	}
 
 	@Override
@@ -112,7 +115,11 @@ public class TreeMap1<K extends Comparable<K>,V> implements Map<K,V>{
 		//is removal based on key or entire entry?
 		//get
 		TreeEntry<K,V> entry = tree.remove(temp);
-		return entry.value();
+		if (entry == null) {
+			return null;
+		}else {
+			return entry.value();
+		}
 	}
 
 	//<--------end of part (b)--------->//
@@ -136,42 +143,29 @@ public class TreeMap1<K extends Comparable<K>,V> implements Map<K,V>{
 		return null;
 	}
 	
-	public static void main(String[] args) {
-//		TreeEntry<Integer,String> e1 = new TreeEntry<>(1,"Hey");
-//		TreeEntry<Integer,String> e2 = new TreeEntry<>(2,"Hey");
-//		System.out.println(e1);
-//		System.out.println(e1.compareTo(e2));
-		
-		TreeMap1<Integer,String> t1 = new TreeMap1<>();
-		System.out.println(t1.size());
-		System.out.println(t1);
-		System.out.println(t1.put(3, "Boy"));
-		System.out.println(t1);
-		
+	public static void main(String[] args) {	
 		//<--------start of part (d)--------->//
-//		TreeMap1<Integer,String> t = new TreeMap1<>();
-//		t.put(24, "");
-//		System.out.println(t);
-//		t.put(12, "");
-//		System.out.println(t);
-//		t.put(36, "");
-//		System.out.println(t);
-//		t.put(5, "");
-//		System.out.println(t);
-//		t.put(7, "");
-//		System.out.println(t);
-//		t.put(2, "");
-//		System.out.println(t);
-//		t.put(76, "");
-//		System.out.println(t);
-//		t.remove(24, "");
-//		System.out.println(t);
-//		t.put(18, "");
-//		System.out.println(t);
-//		t.put(24, "");
-//		System.out.println(t);
+		TreeMap1<Integer,String> t = new TreeMap1<>();
+		t.put(24, "");
+		System.out.println(t);
+		t.put(12, "");
+		System.out.println(t);
+		t.put(36, "");
+		System.out.println(t);
+		t.put(5, "");
+		System.out.println(t);
+		t.put(7, "");
+		System.out.println(t);
+		t.put(2, "");
+		System.out.println(t);
+		t.put(76, "");
+		System.out.println(t);
+		t.remove(24);
+		System.out.println(t);
+		t.put(18, "");
+		System.out.println(t);
+		t.put(24, "");
+		System.out.println(t);
 		//<--------end of part (d)--------->//
-
-
 	}
 }
