@@ -1,5 +1,10 @@
 package impl;
 
+/**
+ * @author 12312821
+ *
+ * Test Class as requested in Part 1 (b)
+ */
 public class BSTTest {
 
 	public static void main(String[] args) {
