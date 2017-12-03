@@ -15,7 +15,7 @@ public class TreeMap1<K extends Comparable<K>,V> implements Map<K,V>{
 	//The key must be comparable for the TreeEntry to be comparable
 	
 //	class Item<T extends Comparable<T>> implements Comparable<Item<T>>
-	private static class TreeEntry<K,V> implements Comparable<TreeEntry<K,V>>{
+	private static class TreeEntry<K extends Comparable<K>,V> implements Comparable<TreeEntry<K,V>>{
 		
 //	protected class TreeEntry<K,V> implements Entry<K,V>, Comparable<TreeEntry<K,V>>{
 
@@ -24,9 +24,9 @@ public class TreeMap1<K extends Comparable<K>,V> implements Map<K,V>{
 		private K key;
 		private V value;
 		
-		public TreeEntry() {
-			this(null,null);
-		}
+//		public TreeEntry() {
+//			this(null,null);
+//		}
 		
 		public TreeEntry(K k, V v) {
 			key = k;
@@ -51,13 +51,17 @@ public class TreeMap1<K extends Comparable<K>,V> implements Map<K,V>{
 		public String toString() {
 			return "{k" + key + ", " + value + "}";
 		}
+	
+		public int compareTo(TreeEntry<K, V> o) {
+//	        int x = key.compareTo(arg0.key());
+//	        return (x != 0 ? x : key.compareTo(arg0.key()));
+			return key.compareTo(o.key());
 
-		@SuppressWarnings("unchecked")
-		//Is this correct?
-		@Override
-		public int compareTo(TreeEntry<K, V> arg0) {
-			return ((Comparable<TreeEntry<K, V>>)key).compareTo((TreeEntry<K, V>)arg0.key());
-		}
+	    }
+		
+		
+			
+		
 				
 	}
 	
@@ -158,60 +162,3 @@ public class TreeMap1<K extends Comparable<K>,V> implements Map<K,V>{
 		System.out.println(t1);
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//public class TreeMap1<TreeEntry<K,V> extends BinarySearchTree<TreeEntry<K,V>>
-
-
-//import java.util.Iterator;
-//
-//import core.Map;
-//
-//public class TreeMap1<T extends Comparable<T>> implements Iterable<T> {
-////Type T refers to TreeEntry which Extends Comparable
-//	
-//	private BinarySearchTree<T> tree;
-//	
-//	protected class TreeEntry <K,V> implements Comparable<K> {
-//
-//		@Override
-//		public int compareTo(K o) {
-//			// TODO Auto-generated method stub
-//			return 0;
-//		}
-//		
-//	}
-//	
-//	public TreeMap1() {
-//		// TODO Auto-generated constructor stub
-//	}
-//
-//	@Override
-//	public Iterator<T> iterator() {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//}
